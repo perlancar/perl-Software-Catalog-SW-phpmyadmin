@@ -34,9 +34,12 @@ sub canon2native_arch_map {
 sub get_download_url {
     my ($self, %args) = @_;
 
-    my $version = $args{version} // $self->get_latest_version;
+    my $version = $args{version} // $self->get_latest_version->[2];
 
-    [200, "OK", "https://files.phpmyadmin.net/phpMyAdmin/$version/phpMyAdmin-$version-all-languages.zip"];
+    [200,
+     "OK",
+     "https://files.phpmyadmin.net/phpMyAdmin/$version/phpMyAdmin-$version-all-languages.zip",
+     {'func.arch' => 'src'}];
 }
 
 sub get_archive_info {
@@ -49,6 +52,6 @@ sub get_archive_info {
 }
 
 1;
-# ABSTRACT: Firefox
+# ABSTRACT: phpMyAdmin
 
 =for Pod::Coverage ^(.+)$
