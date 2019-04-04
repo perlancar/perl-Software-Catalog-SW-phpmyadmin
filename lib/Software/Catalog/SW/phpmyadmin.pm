@@ -45,9 +45,7 @@ sub get_download_url {
 sub get_archive_info {
     my ($self, %args) = @_;
     [200, "OK", {
-        programs => [
-            {name=>"firefox", path=>"/"},
-        ],
+        programs => [],
     }];
 }
 
