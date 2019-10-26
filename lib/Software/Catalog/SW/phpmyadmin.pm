@@ -13,13 +13,9 @@ with 'Software::Catalog::Role::Software';
 
 use Software::Catalog::Util qw(extract_from_url);
 
-sub meta {
-    return {
-        homepage_url => "https://www.phpmyadmin.net/",
-    };
-}
+sub homepage_url { "https://www.phpmyadmin.net/" }
 
-sub get_latest_version {
+sub latest_version {
     my ($self, %args) = @_;
 
     extract_from_url(
@@ -31,7 +27,7 @@ sub get_latest_version {
 sub canon2native_arch_map {
 }
 
-sub get_download_url {
+sub download_url {
     my ($self, %args) = @_;
 
     my $version = $args{version} // $self->get_latest_version->[2];
@@ -42,7 +38,7 @@ sub get_download_url {
      {'func.arch' => 'src'}];
 }
 
-sub get_archive_info {
+sub archive_info {
     my ($self, %args) = @_;
     [200, "OK", {
         programs => [],
